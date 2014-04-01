@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=iRecorder
+Name[zh_CN]=iRecorder
+GenericName=Audio Recorder
+GenericName[zh_CN]=简易录音机
+Comment=Simple Audio Recorder clone
+Comment[zh_CN]=简易录音机
+Icon=irecorder
+Type=Application
+Categories=Audio
+Exec=irecorder
+StartupNotify=false
+Terminal=false

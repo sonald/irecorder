@@ -30,7 +30,7 @@ set(srcs ${SRCS})
 set(target irecorder)
 
 file(GLOB TS ${CMAKE_SOURCE_DIR}/translations/*.ts)
-file(GLOB QM ${CMAKE_SOURCE_DIR}/translations/*.qm)
+#file(GLOB QM ${CMAKE_SOURCE_DIR}/translations/*.qm)
 qt5_create_translation(QM ${SRCS} ${TS})
 
 if (APPLE)
@@ -45,3 +45,7 @@ set(IRECORDER_INSTALL_DATA_DIR share/irecorder/)
 install(TARGETS ${target} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 install(FILES ${QM} DESTINATION
     "${CMAKE_INSTALL_PREFIX}/${IRECORDER_INSTALL_DATA_DIR}")
+install(FILES irecorder.png DESTINATION
+    "${CMAKE_INSTALL_PREFIX}/${IRECORDER_INSTALL_DATA_DIR}")
+install(FILES irecorder.desktop DESTINATION
+    "${CMAKE_INSTALL_PREFIX}/share/applications/")
