@@ -46,6 +46,6 @@ install(TARGETS ${target} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 install(FILES ${QM} DESTINATION
     "${CMAKE_INSTALL_PREFIX}/${IRECORDER_INSTALL_DATA_DIR}")
 install(FILES irecorder.png DESTINATION
-    "${CMAKE_INSTALL_PREFIX}/${IRECORDER_INSTALL_DATA_DIR}")
+    "${CMAKE_INSTALL_PREFIX}/share/icons")
 install(FILES irecorder.desktop DESTINATION
     "${CMAKE_INSTALL_PREFIX}/share/applications/")
