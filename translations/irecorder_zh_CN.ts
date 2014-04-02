@@ -4,13 +4,22 @@
 <context>
     <name>AudioCapturer</name>
     <message>
-        <location filename="../audiocapture.cpp" line="20"/>
         <source>Start &amp;Record</source>
+        <translation type="vanished">开始录制(&amp;R)</translation>
+    </message>
+    <message>
+        <source>Stop &amp;Recording</source>
+        <translation type="vanished">停止录制(&amp;S)</translation>
+    </message>
+    <message>
+        <location filename="../audiocapture.cpp" line="18"/>
+        <location filename="../audiocapture.cpp" line="76"/>
+        <source>Start &amp;Recording</source>
         <translation>开始录制(&amp;R)</translation>
     </message>
     <message>
         <location filename="../audiocapture.cpp" line="58"/>
-        <source>Stop &amp;Recording</source>
+        <source>&amp;Stop Recording</source>
         <translation>停止录制(&amp;S)</translation>
     </message>
     <message>
@@ -24,9 +33,8 @@
         <translation>音频文件 (*.*)</translation>
     </message>
     <message>
-        <location filename="../audiocapture.cpp" line="76"/>
         <source>&amp;Start Recording</source>
-        <translation>开始录制(&amp;S)</translation>
+        <translation type="vanished">开始录制(&amp;S)</translation>
     </message>
 </context>
 <context>

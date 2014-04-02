@@ -7,9 +7,7 @@ AudioCapturer::AudioCapturer(QWidget* parent)
 {
     _recorder = new QAudioRecorder;
     QAudioEncoderSettings audioSettings;
-    audioSettings.setCodec("audio/vorbis");
     audioSettings.setQuality(QMultimedia::HighQuality);
-    _recorder->setContainerFormat("ogg");
     _recorder->setEncodingSettings(audioSettings);
     connect(_recorder, &QAudioRecorder::durationChanged, 
             this, &AudioCapturer::onDurationUpdated);
@@ -17,7 +15,7 @@ AudioCapturer::AudioCapturer(QWidget* parent)
     qDebug() << _recorder->audioInputs();
     qDebug() << _recorder->supportedContainers();
 
-    _pbRecord = new QPushButton(tr("Start &Record"));
+    _pbRecord = new QPushButton(tr("Start &Recording"));
     connect(_pbRecord, &QPushButton::clicked, this, &AudioCapturer::buttonClicked);
 
     _progress = new QProgressBar;
@@ -29,7 +27,7 @@ AudioCapturer::AudioCapturer(QWidget* parent)
     layout->addWidget(_pbRecord);
     layout->addWidget(_progress);
 
-    this->setMinimumWidth(400);
+    this->setMinimumWidth(300);
     this->setLayout(layout);
 }
 
@@ -46,16 +44,18 @@ void AudioCapturer::buttonClicked()
 void AudioCapturer::startRecording()
 {
     qDebug() << __PRETTY_FUNCTION__;
-    _tmpAudioFile = "/tmp/irecorder_clip01.mkv";
-    QFile f(_tmpAudioFile);
-    f.open(QIODevice::WriteOnly|QIODevice::Truncate);
-    f.close();
+    QTemporaryFile tmpFile(QDir::tempPath() + "/irecorder_clip");
+    tmpFile.setAutoRemove(false);
+    tmpFile.open();
+    tmpFile.close();
+    _tmpAudioFile = tmpFile.fileName();
+
     if (!_recorder->setOutputLocation(_tmpAudioFile)) {
         qDebug() << _recorder->errorString();
         return;
     }
     _recorder->record();
-    _pbRecord->setText(tr("Stop &Recording"));
+    _pbRecord->setText(tr("&Stop Recording"));
     _state = Recording;
 }
 
@@ -73,7 +73,7 @@ void AudioCapturer::stopRecording()
         QFile::copy(_tmpAudioFile, fileName);
     }
     
-    _pbRecord->setText(tr("&Start Recording"));
+    _pbRecord->setText(tr("Start &Recording"));
     _progress->setValue(0);
 }
 
